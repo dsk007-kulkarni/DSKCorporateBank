@@ -1,0 +1,37 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	  <title>DSK & Company Financial Lt.</title>
+	  <link href="/static/images/LOGO.png" rel="icon">
+	
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css2?family=Tinos&display=swap" rel="stylesheet">
+    <!-- Favicons -->
+	<link rel="stylesheet" href="/static/css/bankbalance.css">
+</head>
+	<body>
+		<img class="logo" src="/static/logo/logo.png">
+		
+		<h1>Congratulation!!<br><%= msg %>!!</h1>
+		<div class="Bankdetails">
+			<h4>Your Loan Details</h4>
+			Personal Details:<br>
+			Name: <%= obj.FullName %>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Email Id: <%= obj.Email %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Mobile No: <%= obj.MobileNo %><br>
+			Account Details:<br>
+			Account No: <%= obj.AccNo%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			IFSC code: <%= obj.IFSC %><br>
+			About Loan:<br>
+			Loan type: <%= obj.LType %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Loan Amount: <%= obj.LoanAmount %>Rs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Annual Income: <%= obj.Annual_Income %>Rs<br>
+			Period: For <%= obj.NY %> Years<br>
+			Living Area Information:<br>
+			City: <%= obj.City %>	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
+			State: <%= obj.State %><br>
+			
+		</div>
+		<p class="mt-5 mb-3 text-muted">&copy; DSK Groups of Companies</p>
+	</body>
+</html>								

@@ -1,0 +1,40 @@
+body
+{
+	background-image: -webkit-linear-gradient(65deg, #63c1be 50%, #E4E9FD 50%);
+  	height: 100%;
+	text-align: center;
+	font-family: 'Tinos', serif;
+}
+h1{
+	font-size: 5rem;
+	color: #276969;
+}
+h2{
+	font-size: 3rem;
+	color: #276969;
+}
+h3{
+	text-align: left;
+	color: #080808;
+	margin-top: 2%;
+	font-size: 2.8rem;
+}
+.Bankdetail{
+	margin-left: 15%;
+	padding-top: 4%;
+	padding-left: 7%;
+	width:75%;
+	height: 62%;
+	background-color: #0d0d0d;
+	color: #1c7471;
+	font-size: 3rem;
+	margin-top: 2%;
+	text-align: left;
+	border-radius: 10%;
+}
+.logo{
+	margin-top:1%;
+	margin-bottom: 1%;
+	width: 30%;
+	height: 10%;
+}

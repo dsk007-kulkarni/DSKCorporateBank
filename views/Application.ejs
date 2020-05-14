@@ -1,0 +1,126 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	  <title>DSK & Company Financial Lt.</title>
+	  <link href="/static/images/LOGO.png" rel="icon">
+	
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css2?family=Tinos&display=swap" rel="stylesheet">
+    <!-- Favicons -->
+	<link rel="stylesheet" href="/static/css/Application.css">
+</head>
+	<body>
+
+		<img class="logo" src="/static/logo/logo.png">
+		<h1>Application Form</h1>
+
+<div class="Form">
+<form id="form_id" method="post">
+<div class="form-group row">
+    <label for="fname" class="col-sm-2 col-form-label">First Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="fname" placeholder="First Name" name="fname" >
+    </div>
+  </div>
+	<div class="form-group row">
+    <label for="lname" class="col-sm-2 col-form-label">Last Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="lname" placeholder="Last Name"  name="lname" >
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Enter Your Email</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Email Connected to Bank"  name="mail" >
+    </div>
+  </div>
+	  <div class="form-group row">
+    <label for="MN" class="col-sm-2 col-form-label">Mobile No</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="MN" placeholder="Mobile No connected to Bank"  name="mobileno" >
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Enter Your Password</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Password" name="password"  >
+    </div>
+  </div>
+	<div class="form-group row">
+    <label for="AccNo" class="col-sm-2 col-form-label">Enter Your Account No</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="AccNo" placeholder="Account No."  name="AccNo" >
+    </div>
+  </div>
+	<div class="form-group row">
+    <label for="IFSC" class="col-sm-2 col-form-label">Enter Your IFSC code</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="IFSC" placeholder="IFSC"  name="IFSC"  >
+    </div>
+  </div>
+<div class="form-group row">
+    <label for="IAmount" class="col-sm-2 col-form-label">Enter Anual Income</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="IAmount" placeholder="Anual Income"  name="AI"  >
+    </div>
+  </div>
+<div class="form-group row">
+    <label for="Amount" class="col-sm-2 col-form-label">Enter Loan Amount</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="Amount" placeholder="Loan Amount" name="LA"  >
+    </div>
+  </div>
+	<div class="form-group col-md-4">
+      <label for="inputState">Number of Years</label>
+      <select id="inputState" class="form-control" name="years" >
+        <option selected>Choose No of years...</option>
+        <option>10</option>
+        <option>20</option>
+        <option>30</option>
+        <option>40</option>
+      </select>
+</div>
+<div class="form-group row">
+    <label for="City" class="col-sm-2 col-form-label">Enter Your City Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="City" placeholder="City Name"  name="cname" >
+    </div>
+  </div>
+<div class="form-group col-md-4">
+      <label for="inputState">State</label>
+      <select id="inputState" class="form-control" name="sname" >
+        <option selected>Choose...</option>
+        <option>Panjab</option>
+        <option>Maharashtra</option>
+        <option>Karnatak</option>
+        <option>Gujrat</option>
+      </select>
+</div>
+
+	
+<input type="radio" id="hl" name="l" value="Home"><label style="margin-left:10px" for="hl">Home Loan</label><br>
+<input type="radio" id="gl" name="l" value="Gold"><label style="margin-left:10px"  for="gl">Gold Loan</label><br>
+<input type="radio" id="cl" name="l" value="Car"><label style="margin-left:10px"  for="cl">Car Loan</label><br>
+	
+<button type="submit" class="btn btn-lg btn-info RLoan" id="a" onclick="displayRadioValue()">Request Loan</button>
+</form>
+</div>
+	<script type="text/javascript">
+		function displayRadioValue() { 
+            var ele = document.getElementsByTagName('input'); 
+              
+            for(i = 0; i < ele.length; i++) { 
+                  
+                if(ele[i].type=="radio") { 
+                  
+                    if(ele[i].checked) {
+						document.getElementById("a").value= "/Application/"+document.getElementById(ele[i].id).value;
+						var action = document.getElementById("a").value;
+						document.getElementById("form_id").action = action;
+                } 
+            } 
+        } 
+	}
+</script>
+</body>
+</html>

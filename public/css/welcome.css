@@ -1,0 +1,46 @@
+body
+{
+	background-image: -webkit-linear-gradient(65deg, #63c1be 50%, #E4E9FD 50%);
+  	height: 100%;
+	text-align: center;
+	font-family: 'Tinos', serif;
+}
+h1{
+	font-size: 5rem;
+	color: #276969;
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+
+.TEXT{
+	margin-top: 2%;
+	font-size: 1.1rem;
+	color:  #276969;
+}
+.logo{
+	width: 40%;
+	height: 50%;
+	margin-right: 55%;
+	margin-left: 2%;
+}
+.crimages{
+	width: 90%;
+	height: 75%;
+	border-radius: 2%;
+	text-align: center;
+}
+a{
+	margin-top: 2%;
+	margin-left:2%;
+}
+
+.header {
+	border-radius: 10%;
+	margin-left: 15%;
+	width: 70%;
+  padding: 60px;
+  margin-bottom: 2%;
+  text-align: center;
+
+  font-size: 30px;
+}

@@ -1,0 +1,37 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	  <title>DSK & Company Financial Lt.</title>
+	  <link href="/static/images/LOGO.png" rel="icon">
+	
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css2?family=Tinos&display=swap" rel="stylesheet">
+    <!-- Favicons -->
+	<link rel="stylesheet" href="/static/css/bankbalance.css">
+</head>
+	<body>
+		<img class="logo" src="/static/logo/logo.png">
+		<h1>Hello Dear Customer</h1>
+		<h2>Here is your Bank Balance</h2>
+		<div class="Bankdetail">
+		You have <%= msg %> Rs in your account
+		</div>
+		<div class="btninp">
+		<a href="/add" role="button" class="btn btn-info btninp ">Add Money</a>
+		<a href="/withdraw" role="button" class="btn btn-info btninp">Withdraw Money</a>
+		<a href="/share" role="button" class="btn btn-info btninp">Send Money</a>
+		<a href="/TH" role="button" class="btn btn-info btninp">Cheack Transaction History</a>
+		</div>
+		<p class="mt-5 mb-3 text-muted">&copy; DSK Groups of Companies</p>
+	</body>
+</html>
+
+
+
+
+
+<!--
+		<form action="/register" method="post">
+  <input type="file" i name="img" accept="image/*" placeholder="Upload Image">
+  <input type="submit" class="btn btn-lg btn-primary">
+</form>-->

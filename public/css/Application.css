@@ -1,0 +1,38 @@
+body
+{
+	background-image: -webkit-linear-gradient(65deg, #63c1be 50%, #E4E9FD 50%);
+  	height: 100%;
+	text-align: center;
+	font-family: 'Tinos', serif;
+}
+h1{
+	font-size: 5rem;
+	color: #276969;
+}
+.Bankdetail{
+	margin-left: 22%;
+	margin-top: 3%;
+}
+.logo{
+	margin-top:1%;
+	margin-bottom: 1%;
+	width: 30%;
+	height: 10%;
+}
+.btninp{
+	margin:2%; 
+}
+.Form{
+	text-align: left;
+	width: 75%;
+	height: 75%;
+	margin-left: 18%;;
+}
+.col-form-label{
+	margin-left: 1px;
+}
+.RLoan{
+	margin-left: 37%;
+	margin-bottom: 2%;
+	margin-top: 2%;
+}

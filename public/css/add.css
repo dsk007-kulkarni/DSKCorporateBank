@@ -1,0 +1,49 @@
+body
+{
+	background-image: -webkit-linear-gradient(65deg, #63c1be 50%, #E4E9FD 50%);
+  	height: 100%;
+	text-align: center;
+	font-family: 'Tinos', serif;
+}
+h1{
+	font-size: 5rem;
+	color: #276969;
+}
+h2{
+	font-size: 3rem;
+	color: #276969;
+}
+label{
+	font-size: 1.5rem;
+	
+}
+
+.logo{
+	margin-top:1%;
+	margin-bottom: 1%;
+	width: 30%;
+	height: 10%;
+}
+.ele1 {
+	display: block;
+	margin-top: 2%;
+}
+.ele1 input[type="email"] {
+	margin-left: 1%;
+}
+.ele2{
+	display: block;
+	margin-top: 0.5%;
+	margin-bottom: 2%;
+}
+.ele3{
+	display: block;
+	margin-top: 0.5%;
+	margin-bottom: 0.5%;
+}
+.ele2 input[type="text"] {
+	margin-left: 1.5%;
+}
+.ele3 input[type="password"] {
+	margin-left: 1.5%;
+}

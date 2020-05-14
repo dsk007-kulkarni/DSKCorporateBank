@@ -1,0 +1,71 @@
+body
+{
+	background-image: -webkit-linear-gradient(65deg, #63c1be 50%, #E4E9FD 50%);
+  	height: 100%;
+	text-align: center;
+	font-family: 'Tinos', serif;
+}
+h1{
+	font-size: 5rem;
+	color: #276969;
+}
+h2{
+	font-size: 3rem;
+	color: #276969;
+}
+
+ul{
+	text-align:left; 
+	height: 150px;
+	width: 350px;
+	background-color: #E4E9FD;
+	padding: 3px;
+	padding-left: 9px;
+	margin-left: 35%;
+	border-radius: 3%;
+	border: black solid 1.5px;
+	padding-left: 2%;
+	font-size: 1.3rem;
+	color: #1c7471;
+	
+}
+.Bankdetail{
+	margin-left: 20%;
+	padding-top: 2%;
+	width:60%;
+	height: 20%;
+	background-color: #0d0d0d;
+	color: #1c7471;
+	font-size: 3rem;
+	border-radius: 6%;
+	margin-top: 2%;
+}
+.logo{
+	margin-top:1%;
+	margin-bottom: 1%;
+	width: 30%;
+	height: 10%;
+}
+.btninp{
+	margin:2%; 
+}
+.loop {
+	text-align: center;
+}
+.Bankdetails{
+
+	width:100%;
+	height: 100%;
+	background-color: #0d0d0d;
+	color: #1c7471;
+	font-size: 2rem;
+	text-align: left;
+	padding-left: 15%;
+	padding-top: 4%;
+	border-radius: 6%;
+}
+.Bankdetails h4{
+	font-size: 2.7rem;
+	margin-left: 25%;
+	color: aqua;
+}

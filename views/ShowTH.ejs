@@ -1,0 +1,30 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	  <title>DSK & Company Financial Lt.</title>
+	  <link href="/static/images/LOGO.png" rel="icon">
+	
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css2?family=Tinos&display=swap" rel="stylesheet">
+    <!-- Favicons -->
+	<link rel="stylesheet" href="/static/css/bankbalance.css">
+</head>
+	<body>
+		<img class="logo" src="/static/logo/logo.png">
+		<h1>Here is your transaction history</h1>
+		<div class="loop">
+		<% arr.forEach(function(ele){ %>
+		<ul >	
+				<li>
+					<%= ele.Amount %>
+						<%= ele.msg %><br>
+						on<%= ele.Date %><br>
+						at<%= ele.Time %> <br>
+				</li>
+			</ul>
+		<%	}) %>
+		</div>
+		
+		<p class="mt-5 mb-3 text-muted">&copy; DSK Groups of Companies</p>
+	</body>
+</html>

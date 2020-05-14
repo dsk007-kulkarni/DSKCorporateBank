@@ -1,0 +1,36 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	  <title>DSK & Company Financial Lt.</title>
+	  <link href="/static/images/LOGO.png" rel="icon">
+	
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css2?family=Tinos&display=swap" rel="stylesheet">
+    <!-- Favicons -->
+	<link rel="stylesheet" href="/static/css/bankdetails.css">
+</head>
+	<body>
+		<img class="logo" src="/static/logo/logo.png">
+		<h1>Hello Dear Customer</h1>
+		<h1><%= msg %></h1>
+		<h2>Here is your Bank Details</h2>
+		<div class="Bankdetail">
+			Name: <%= obj.FName %> <%= obj.LName %><br> 
+			Bank Name: DSK & Company Financial Lt.<br>
+			Account No: <%= obj.AccNo %><br>
+			IFSC Code: <%=obj.IFSC %><br>
+		</div>
+		<a href="/bankbalance/<%= mail %>?pass=<%= pass %>" role="button" class="btn btn-info" style="margin-top:2%;">Cheack Balance</a>		
+		<p class="mt-5 mb-3 text-muted">&copy; DSK Groups of Companies</p>
+		
+		<script src="/app.js" charset="utf-8"></script>
+	</body>
+</html>
+
+
+
+
+
+<!--
+	
+</form>-->
