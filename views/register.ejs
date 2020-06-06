@@ -45,6 +45,7 @@
     <link href="/static/css/styles.css" rel="stylesheet" type="text/css">
   </head>
   <body class="text-center">
+	  
     <form  id="form_id" class="form-signin" method="post" name="failure">
   	<img class="mb-4 logo" src="/static/logo/logo.png" alt="Logo Of Company">
   	<h1 ><%= msg %></h1>
@@ -52,16 +53,19 @@
   	<input type="text" name="lname" class="form-control " placeholder="Last Name"  required>
 	<input type="email" name="mail" class="form-control " placeholder="Email"  required>
 	<input type="text" name="mobileno" pattern=".{10,10}" class="form-control " placeholder="Mobile No"  required >
-	<input name="password" id="password" pattern=".{8,12}" class="form-control" type="password" placeholder="Create Password(min 8 to 12 characters)"onkeyup='check()' />
+	<input name="password" id="password" pattern=".{8,12}" class="form-control" type="password" placeholder="Create Password (min 8 to 15 characters) "onkeyup='check()' />
+		
+<label for="password">(At least one lowercase letter, one uppercase letter, one numeric digit, and one special character)</label>
 	<input type="password" name="cpassword" id="confirm_password" class="form-control" style="margin-bottom:15px"placeholder="Confirm Password" onkeyup= 'check()' /> 
   	<span id='message' value="a" name="b"></span>
   <button class="btn btn-lg btn-primary btn-block" style="background-color:#288784;border-color:#288784;" type="submit" onclick="myfunction()" id="a">Sign Up!</button>
   <p class="mt-5 mb-3 text-muted">&copy; DSK Groups of Companies</p>
 </form>
 <script type="text/javascript"> 
+var decimal=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
 var check = function() {
   if (document.getElementById('password').value ==
-    document.getElementById('confirm_password').value) {
+    document.getElementById('confirm_password').value && document.getElementById('password').value.match(decimal)) {
     document.getElementById('message').style.color = 'green';
     document.getElementById('message').innerHTML = 'matching';
   } else {

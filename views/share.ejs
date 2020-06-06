@@ -43,11 +43,11 @@
     <link href="/static/css/styles.css" rel="stylesheet" type="text/css">
   </head>
   <body class="text-center">
-    <form action="/share" class="form-signin" method="post">
+    <form action="/share/<%= mail %>" class="form-signin" method="post">
   	<img class="mb-4 logo" src="/static/logo/logo.png" alt="Logo Of Company">
   	<h1>Hello Dear Customer</h1>
 	<h2><%= msg %></h2>
-	<input type="email" name="mail1" class="form-control " placeholder="Sender's Email"  required>
+	
 	<input type="email" name="mail2" class="form-control " placeholder="Receiver's Email"  required>
 	<input type="password" name="password"   class="form-control" placeholder="Password" required>
 	<input type="text" name="amount" placeholder="Amount" class="form-control "required>

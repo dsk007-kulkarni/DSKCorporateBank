@@ -9,6 +9,7 @@ const date=require(__dirname + "/date.js");
 
 const app = express();
 mongoose.connect("mongodb+srv://dnyanesh:dnyanesh@cluster0-20iuu.mongodb.net/accountsDB",{useNewUrlParser:true,useUnifiedTopology: true});
+//mongoose.connect("mongodb://localhost:27017/accountsDB",{useNewUrlParser:true,useUnifiedTopology: true});
 
 
 app.set('view engine','ejs');
@@ -82,6 +83,7 @@ app.get("/signin",function(req,res){
 	res.render("signIn",{msg:"Sign In to Your Bank Account"});
 });
 app.get("/register",function(req,res){
+	//console.log("hii");
 	res.render("register",{msg:"Create Your Bank Account Now!!"});
 });
 app.get("/contact",function(req,res){
@@ -97,7 +99,7 @@ app.get("/Application",function(req,res){
 })
 app.get("/bankbalance/:type?",function(req,res){
 	let type = req.params.type;
-	console.log("$2b$10$9ULcXW.9rPuflRzCDA3r6.fRCgynJyd0XdZfVMnFBaApf3sc4uING"+"="+req.query.pass);
+	//console.log("$2b$10$9ULcXW.9rPuflRzCDA3r6.fRCgynJyd0XdZfVMnFBaApf3sc4uING"+"="+req.query.pass);
 		customer.findOne({Email:type},function(err,obj){
 			if(obj)
 			{
@@ -125,21 +127,20 @@ app.get("/bankdetail/:type?",function(req,res){
 			res.redirect("/");
 		}
 });});
-app.get("/add",function(req,res){
-	res.render("add");
+app.get("/add/:type",function(req,res){
+	res.render("add",{mail:req.params.type});
 });
-app.get("/withdraw",function(req,res){
-	res.render("withdraw",{msg:"Here You can withdraw money"});
+app.get("/withdraw/:type",function(req,res){
+	res.render("withdraw",{msg:"Here You can withdraw money",mail:req.params.type});
 });
-app.get("/share",function(req,res){
-	res.render("share",{msg:"Here you can send money"});
+app.get("/share/:type",function(req,res){
+	res.render("share",{msg:"Here you can send money",mail:req.params.type});
 });
 app.get("/TC",function(req,res){
 	res.render("TC");
 });
-app.get("/TH",function(req,res){
-	
-	res.render("TH");
+app.get("/TH/:type",function(req,res){
+	res.render("TH",{mail:req.params.type});
 });
 
 
@@ -162,23 +163,26 @@ bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
 	});
 	customer.countDocuments({}, function (err, count) {
 		if(count===0){
+			
 			newCustomer.save(function(err){
 						if(err){
 							console.log(err);
 						}else{
-							res.render("bankdetails",					{obj:newCustomer,msg:date.getHours(),mail:req.body.mail,pass:newCustomer.Password});
+							res.redirect("/bankdetail/"+ req.body.mail+"?pass="+newCustomer.Password);
 						}
 				});
 		}else{
 			customer.findOne({Email: req.body.mail},function(err,obj){
 		if(!err){
 			if(obj){
-				res.render("signIn",{msg:"You have already registered Now please SignIn"})
+				//console.log("hii");
+				res.render("signIn",{msg:"You have already registered Now please SignIn"});
 			}else{
 				newCustomer.save(function(err){
 						if(err){
 							console.log(err);
 						}else{
+							//console.log("hii");
 							res.redirect("/bankdetail/"+ req.body.mail+"?pass="+newCustomer.Password);
 						}
 				});
@@ -199,23 +203,27 @@ app.post("/signIn",function(req,res){
 					}
 			});			
 		}else{
-			res.render("register",{msg:"You have not registered yet"})
+			res.redirect("/register");
 		}
 	});
 });
 
-app.post("/add",function(req,res){
-	customer.findOne({Email:req.body.mail},function(err,obj){
+app.post("/add/:type",function(req,res){
+	customer.findOne({Email:req.params.type},function(err,obj){
 		if(obj){
+			//console.log(req.params.type);
+			bcrypt.compare(req.body.password, obj.Password, function(err, result) {
+    				if(result){
+						//console.log(req.params.type+" "+req.body.password);
 			var balance = parseInt(obj.Balance)+parseInt(req.body.amount);
 			customer.updateOne(
-			{Email:req.body.mail},
+			{Email:req.params.type},
 			{$set:{Balance:balance.toString()}},
 			function(err){
 				if(err){
 					console.log(err);
 				}else{
-					res.redirect("/bankbalance/"+ req.body.mail+"?pass="+obj.Password);
+					res.redirect("/bankbalance/"+ req.params.type+"?pass="+obj.Password);
 				}
 			});
 			var today = new Date();
@@ -223,19 +231,21 @@ app.post("/add",function(req,res){
 				Date : " "+(today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear()),
 				Time : " "+(today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()),
 				msg : " Payment credited successfully by you",
-				Email : req.body.mail,
+				Email : req.params.type,
 				Amount: req.body.amount + "Rs ",
 			});
 			newTH.save();
-		}else{
-			res.render("register",{msg:"Pls register first"});
+					}else{
+			res.redirect("/add/"+req.params.type);
+		}
+		});
 		}
 	});
 
 });
 
-app.post("/withdraw",function(req,res){
-	customer.findOne({Email: req.body.mail},function(err,obj){
+app.post("/withdraw/:type",function(req,res){
+	customer.findOne({Email: req.params.type},function(err,obj){
 		if(obj){
 			if(parseInt(req.body.amount)> parseInt(obj.Balance)){
 				res.render("failure",{msg:"Sry! You cant send!! Cheack balance First"});
@@ -245,13 +255,13 @@ app.post("/withdraw",function(req,res){
 				bcrypt.compare(req.body.password, obj.Password, function(err, result) {
     				if(result){
 						customer.updateOne(
-							{Email:req.body.mail},
+							{Email:req.params.type},
 							{$set:{Balance:balance.toString()}},
 							function(err){
 								if(err){
 									console.log(err);
 								}else{
-									res.redirect("/bankbalance/"+ req.body.mail+"?pass="+obj.Password);
+									res.redirect("/bankbalance/"+ req.params.type+"?pass="+obj.Password);
 								}
 							});
 						var today = new Date();
@@ -259,23 +269,23 @@ app.post("/withdraw",function(req,res){
 							Date : " "+(today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear()),
 							Time : " "+(today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()),
 							msg : " Payment withdraw successfully by you",
-							Email : req.body.mail,
+							Email : req.params.type,
 							Amount: req.body.amount + "Rs ",
 						});
 						newTH.save();
 					}else{
-						res.redirect("/withdraw");
+						res.redirect("/withdraw/"+req.params.type);
 					}
 				});			
 
 		}
 	}else{
-			res.render("register",{msg:"Pls register first"});
+			res.redirect("/register");
 		}
 });
 });
-app.post("/share",function(req,res){
-	customer.findOne({Email:req.body.mail1},function(err,obj1){
+app.post("/share/:type",function(req,res){
+	customer.findOne({Email:req.params.type},function(err,obj1){
 		if(obj1){
 			customer.findOne({Email:req.body.mail2},function(err,obj2){
 				if(obj2){
@@ -287,7 +297,7 @@ app.post("/share",function(req,res){
 					bcrypt.compare(req.body.password, obj1.Password, function(err, result) {
     					if(result){
 							customer.updateOne(
-								{Email:req.body.mail1},
+								{Email:req.params.type},
 								{$set:{Balance:balance1.toString()}},
 								function(err){
 									if(err){
@@ -314,11 +324,11 @@ app.post("/share",function(req,res){
 											Date : " "+(today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear()),
 											Time : " "+(today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()),
 											msg : " Payment is transfered successfully to "+req.body.mail2,
-											Email : req.body.mail1,
+											Email : req.params.type,
 											Amount: req.body.amount + "Rs ",
 										});
 										newTH.save();
-															res.redirect("/bankbalance/"+ req.body.mail1+"?pass="+obj1.Password);
+															res.redirect("/bankbalance/"+ req.params.type+"?pass="+obj1.Password);
 														}
 										});
 										
@@ -327,16 +337,17 @@ app.post("/share",function(req,res){
 											
 											
 						}else{
-							res.redirect("/share");
+							res.redirect("/share/"+req.params.type);
 						}
 				});
 			}
 			else{
-			res.render("register",{msg:"Pls register first"});
+				res.render("failure",{msg:"Sry dear customer!! Receiver does not have account in our bank."});
+			//res.render("register",{msg:"Pls register first"});
 		}
 		});
 	}else{
-			res.render("register",{msg:"Pls register first"});
+			res.redirect("/register");
 		}
 		
 	});
@@ -344,8 +355,8 @@ app.post("/share",function(req,res){
 
 app.post("/Application/:type",function(req,res){
 	let o = req.body;
-	console.log(o);
-	customer.findOne({Email:o.mail},function(err,obj){
+	//console.log(o);
+	customer.findOne({Email:req.params.type},function(err,obj){
 		if(obj){
 			bcrypt.compare(req.body.password, obj.Password, function(err, result) {
     					if(result){
@@ -395,30 +406,30 @@ app.post("/Application/:type",function(req,res){
 								}
 			});
 		}else{
-			console.log(obj);
-			res.render("register",{msg:"Pls register First"});
+			//console.log(obj);
+			res.redirect("/register");
 		}
 	});
 });
 
 app.post("/failure",function(req,res){
-	res.render("register",{msg:"Pls confirm password"})
+	res.redirect("/register");//,{msg:"Pls confirm password"})
 });
 
-app.post("/TH",function(req,res){
-	customer.findOne({Email: req.body.mail},function(err,obj){
+app.post("/TH/:type",function(req,res){
+	customer.findOne({Email: req.params.type},function(err,obj){
 		if(obj){
 					bcrypt.compare(req.body.password, obj.Password, function(err, result) {
     				if(result){
-						thistory.find({Email:req.body.mail},function(err,obj){
+						thistory.find({Email:req.params.type},function(err,obj){
 							res.render("ShowTH",{arr:obj});
 						});
 					}else{
-						res.redirect("/TH");
+						res.redirect("/TH/"+req.params.type);
 					}
 			});			
 		}else{
-			res.render("register",{msg:"You have not registered yet"})
+			res.redirect("/register");
 		}
 	});
 });

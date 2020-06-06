@@ -43,11 +43,11 @@
     <link href="/static/css/styles.css" rel="stylesheet" type="text/css">
   </head>
   <body class="text-center">
-    <form action="/add" class="form-signin" method="post">
+    <form action="/add/<%= mail %>" class="form-signin" method="post">
   	<img class="mb-4 logo" src="/static/logo/logo.png" alt="Logo Of Company">
   	<h1>Hello Dear Customer</h1>
 	<h2>Here you can add money</h2>
-	<input type="email" name="mail" class="form-control " placeholder="Email"  required>
+	<input type="password" name="password" class="form-control " placeholder="Password"  required>
 	<input type="text" name="amount" placeholder="Amount"   class="form-control "
  required>
   <button class="btn btn-lg btn-info btn-block" style="background-color:#288784;border-color:#288784; margin-top:8%;" type="submit">Add</button>
